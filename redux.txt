@@ -1,0 +1,8 @@
+redux sirve parea manejar el estado de una manera mas facil,
+solo se tiene un state principal y el state cambio segun la accion del cliente 
+
+Store: Contiene el state
+Dispatch:Ejecuta una accion que actualiza el state
+Action: Objeto js, tiene datos
+Subscribe: Similar a un event listener para el state
+Reducers:Funcion para las acciones
