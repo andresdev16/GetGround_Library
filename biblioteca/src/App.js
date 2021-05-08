@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import Header from './Componentes/Header';
-import Libro from './Componentes/Libro';
+import Book from './Componentes/Book';
 import Index from './Componentes/Index';
 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
@@ -16,7 +16,7 @@ function App() {
 
       <div className="container">
         <Switch>
-          <Route exact path="/libros/nuevo" component={Libro}/>
+          <Route exact path="/books/nuevo" component={Book}/>
           <Route exact path="/" component={Index}/>
         </Switch>
       </div>

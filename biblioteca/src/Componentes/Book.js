@@ -1,9 +1,9 @@
 import React,{useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {createBook} from '../Actions/libroActions';
+import {createBook} from '../Actions/bookActions';
 
 
-const Libro = () =>{
+const Book = () =>{
 
     const[id, saveId] = useState('');
     const[book_author, savebook_author] = useState('');
@@ -15,9 +15,9 @@ const Libro = () =>{
 
     const dispatch = useDispatch();
 
-    const cargando = useSelector(state => state.libros.loading);
+    const cargando = useSelector(state => state.books.loading);
 
-    const addBook = libro => dispatch(createBook(libro));
+    const addBook = book => dispatch(createBook(book));
 
     const newBook = e =>{
         e.preventDefault();
@@ -39,7 +39,7 @@ const Libro = () =>{
                <div className="card">
                    <div className="card-body">
                        <h2 className="text-center mb-4 font-weight-bold">
-                           Agregar un Libro
+                           Agregar un book
                        </h2>
                    </div>
                    
@@ -141,4 +141,4 @@ const Libro = () =>{
     );
 }
 
-export default Libro;
+export default Book;

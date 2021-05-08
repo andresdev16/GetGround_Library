@@ -2,13 +2,13 @@ import {ADD_BOOK, ADD_BOOK_EXITO, ADD_BOOK_ERROR, START_DOWNLOAD_BOOK, SUCCESS_B
  from '../types/Index';
  import clientAxios from '../config/axios';
 
- export function createBook (libro){
+ export function createBook (book){
      return async (dispatch) =>{
          dispatch(addBook());
-         console.log(libro)
+         console.log(book)
          try{
-            await clientAxios.post('/books', libro);
-             dispatch(addBookSuccess(libro));
+            await clientAxios.post('/books', book);
+             dispatch(addBookSuccess(book));
 
          }catch (error){
              console.log(error);
@@ -22,14 +22,14 @@ import {ADD_BOOK, ADD_BOOK_EXITO, ADD_BOOK_ERROR, START_DOWNLOAD_BOOK, SUCCESS_B
      type: ADD_BOOK
  })
 
- const addBookSuccess = libro => ({
+ const addBookSuccess = book => ({
      type: ADD_BOOK_EXITO,
-     payload: libro
+     payload: book
  })
 
- const addBookError =  estado => ({
+ const addBookError =  status => ({
      type: ADD_BOOK_ERROR,
-     payload:estado
+     payload:status
  })
 
  export function getBook (){
@@ -41,11 +41,11 @@ import {ADD_BOOK, ADD_BOOK_EXITO, ADD_BOOK_ERROR, START_DOWNLOAD_BOOK, SUCCESS_B
              const responseThu = await clientAxios.post('/books');
              const response = responseThu.data.books;
 
-             dispatch(descargaLibroExitosa(response))
+             dispatch(descargabookExitosa(response))
             
          }catch(error){
              console.log(error);
-             dispatch(descargaLibroError())
+             dispatch(descargabookError())
          }
      }
  }
@@ -55,12 +55,12 @@ import {ADD_BOOK, ADD_BOOK_EXITO, ADD_BOOK_ERROR, START_DOWNLOAD_BOOK, SUCCESS_B
      payload:true
  })
 
- const descargaLibroExitosa = libros => ({
+ const descargabookExitosa = books => ({
      type: SUCCESS_BOOK_DOWNLOAD, 
-     payload: libros
+     payload: books
  })
 
- const descargaLibroError = () => ({
+ const descargabookError = () => ({
      type: DOWNLOAD_BOOK_ERROR,
      payload:true
  })

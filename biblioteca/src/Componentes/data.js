@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Data = ({libros}) =>{
-    const {book_author,book_pages,book_publication_city,book_publication_country,book_publication_year, book_title, id} = libros
+const Data = ({books}) =>{
+    const {book_author,book_pages,book_publication_city,book_publication_country,book_publication_year, book_title, id} = books
     return(
         <tr>
             <td>{book_author}</td>

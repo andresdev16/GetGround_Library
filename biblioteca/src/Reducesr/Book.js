@@ -2,7 +2,7 @@ import {ADD_BOOK, ADD_BOOK_EXITO, ADD_BOOK_ERROR, START_DOWNLOAD_BOOK, SUCCESS_B
  from '../types/Index';
  
 const initialState = {
-    libros:[],
+    books:[],
     error: null,
     loading: false
 }
@@ -20,7 +20,7 @@ export default function(state = initialState, action){
             return{
                 ...state,
                 loading:false,
-                libros: [...state.libros, action.payload]
+                books: [...state.books, action.payload]
             }
 
         case DOWNLOAD_BOOK_ERROR:
@@ -37,7 +37,7 @@ export default function(state = initialState, action){
                 ...state,
                 loading:false,
                 error:null,
-                libros:action.payload
+                books:action.payload
                 
           }
        default:

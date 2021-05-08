@@ -1,33 +1,33 @@
 import React,{useEffect, useState} from 'react';
 import{useSelector, useDispatch} from 'react-redux';
-import{getBook} from '../Actions/libroActions';
+import{getBook} from '../Actions/bookActions';
 import DataTable from 'react-data-table-component';
 
 const column = [
     {
-        name:'Autor del Libro',
+        name:'Author of the book',
         selector: 'book_author',
         
     },
     {
-        name:'Paginas',
+        name:'Pages',
         selector: 'book_pages',
         sortable:true
     },
     {
-        name:'Ciudad',
+        name:'City',
         selector: 'book_publication_city'
     },
     {
-        name:'Pais',
+        name:'Country',
         selector: 'book_publication_country'
     },
     {
-        name:'Año',
+        name:'Year',
         selector: 'book_publication_year'
     },
     {
-        name:'Titulo',
+        name:'Title',
         selector: 'book_title'
     },
     {
@@ -51,14 +51,14 @@ export default function Index () {
 
     }, []);
 
-    const listBook = useSelector(state => state.libros.libros);
+    const listBook = useSelector(state => state.books.books);
 
     return (
        <div>
             <DataTable
              columns={column}
              data={listBook}
-             title="Libros Registrados"
+             title="Registered books"
              pagination
             />
        </div>
