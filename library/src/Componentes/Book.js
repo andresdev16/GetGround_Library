@@ -39,13 +39,13 @@ const Book = () =>{
                <div className="card">
                    <div className="card-body">
                        <h2 className="text-center mb-4 font-weight-bold">
-                           Agregar un book
+                           Add new book
                        </h2>
                    </div>
                    
                    <form onSubmit={newBook}>
                        <div className="form-group ml-3 mr-3">
-                           <label>Autor</label>
+                           <label>Author</label>
                            <input
                                type="text"
                                className="form-control"
@@ -57,7 +57,7 @@ const Book = () =>{
                        </div>
 
                        <div className="form-group ml-3 mr-3">
-                           <label>Ciudad</label>
+                           <label>City</label>
                            <input
                                type="text"
                                className="form-control"
@@ -69,7 +69,7 @@ const Book = () =>{
                        </div>
 
                        <div className="form-group ml-3 mr-3">
-                           <label>Pais</label>
+                           <label>Country</label>
                            <input
                                type="text"
                                className="form-control"
@@ -81,7 +81,7 @@ const Book = () =>{
                        </div>
 
                        <div className="form-group ml-3 mr-3">
-                           <label>Año</label>
+                           <label>Year</label>
                            <input
                                type="number"
                                className="form-control"
@@ -93,7 +93,7 @@ const Book = () =>{
                        </div>
 
                        <div className="form-group ml-3 mr-3">
-                           <label>Paginas</label>
+                           <label>Pages</label>
                            <input
                                type="number"
                                className="form-control"
