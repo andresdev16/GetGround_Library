@@ -1,9 +1,9 @@
 import React,{useEffect, useState} from 'react';
 import{useSelector, useDispatch} from 'react-redux';
-import{obtenerLibro} from '../Actions/libroActions';
+import{getBook} from '../Actions/libroActions';
 import DataTable from 'react-data-table-component';
 
-const columnas = [
+const column = [
     {
         name:'Autor del Libro',
         selector: 'book_author',
@@ -46,20 +46,18 @@ export default function Index () {
 
     useEffect( ()=> {
 
-        const cargarLibro = () => dispatch(obtenerLibro());
-        cargarLibro();
+        const loadBook = () => dispatch(getBook());
+        loadBook();
 
     }, []);
 
-    const listarLibro = useSelector(state => state.libros.libros);
-
-    console.log(listarLibro, "linea 20")
+    const listBook = useSelector(state => state.libros.libros);
 
     return (
        <div>
             <DataTable
-             columns={columnas}
-             data={listarLibro}
+             columns={column}
+             data={listBook}
              title="Libros Registrados"
              pagination
             />

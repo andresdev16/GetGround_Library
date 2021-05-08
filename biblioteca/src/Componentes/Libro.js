@@ -1,28 +1,28 @@
 import React,{useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {crearLibro} from '../Actions/libroActions';
+import {createBook} from '../Actions/libroActions';
 
 
 const Libro = () =>{
 
-    const[id, guardarId] = useState('');
-    const[book_author, guardarbook_author] = useState('');
-    const[book_publication_country, guardarbook_publication_country] = useState('');
-    const[book_publication_city, guardarbook_publication_city] = useState('');
-    const[book_publication_year, guardarbook_publication_year] = useState('');
-    const[book_pages, guardarbook_pages] = useState('');
-    const[book_title, guardarbook_title] = useState('');
+    const[id, saveId] = useState('');
+    const[book_author, savebook_author] = useState('');
+    const[book_publication_country, savebook_publication_country] = useState('');
+    const[book_publication_city, savebook_publication_city] = useState('');
+    const[book_publication_year, savebook_publication_year] = useState('');
+    const[book_pages, savebook_pages] = useState('');
+    const[book_title, savebook_title] = useState('');
 
     const dispatch = useDispatch();
 
     const cargando = useSelector(state => state.libros.loading);
 
-    const agregarLibro = libro => dispatch(crearLibro(libro));
+    const addBook = libro => dispatch(createBook(libro));
 
-    const nuevoLibro = e =>{
+    const newBook = e =>{
         e.preventDefault();
 
-        agregarLibro({
+        addBook({
             book_author,
             book_publication_country,
             book_publication_city,
@@ -43,7 +43,7 @@ const Libro = () =>{
                        </h2>
                    </div>
                    
-                   <form onSubmit={nuevoLibro}>
+                   <form onSubmit={newBook}>
                        <div className="form-group ml-3 mr-3">
                            <label>Autor</label>
                            <input
@@ -51,7 +51,7 @@ const Libro = () =>{
                                className="form-control"
                                name="book_author" 
                                value={book_author}
-                               onChange={e => guardarbook_author(e.target.value)}
+                               onChange={e => savebook_author(e.target.value)}
                                required   
                            />
                        </div>
@@ -63,7 +63,7 @@ const Libro = () =>{
                                className="form-control"
                                name="book_publication_city" 
                                value={book_publication_city}
-                               onChange={e => guardarbook_publication_city(e.target.value)}
+                               onChange={e => savebook_publication_city(e.target.value)}
                                required     
                            />
                        </div>
@@ -75,7 +75,7 @@ const Libro = () =>{
                                className="form-control"
                                name="book_publication_country"
                                value={book_publication_country}
-                               onChange={e => guardarbook_publication_country(e.target.value)}
+                               onChange={e => savebook_publication_country(e.target.value)}
                                required       
                            />
                        </div>
@@ -87,7 +87,7 @@ const Libro = () =>{
                                className="form-control"
                                name="book_publication_year" 
                                value={book_publication_year}
-                               onChange={e => guardarbook_publication_year(Number(e.target.value))}
+                               onChange={e => savebook_publication_year(Number(e.target.value))}
                                required       
                            />
                        </div>
@@ -99,7 +99,7 @@ const Libro = () =>{
                                className="form-control"
                                name="book_pagess"
                                value={book_pages}
-                               onChange={e => guardarbook_pages(Number(e.target.value))}
+                               onChange={e => savebook_pages(Number(e.target.value))}
                                required       
                            />
                        </div>
@@ -112,7 +112,7 @@ const Libro = () =>{
                                className="form-control"
                                name="book_title"
                                value={book_title}
-                               onChange={e => guardarbook_title(e.target.value)}
+                               onChange={e => savebook_title(e.target.value)}
                                required        
                            />
                        </div>
@@ -124,7 +124,7 @@ const Libro = () =>{
                                className="form-control"
                                name="id"
                                value={id}
-                               onChange={e => guardarId(Number(e.target.value))}
+                               onChange={e => saveId(Number(e.target.value))}
                                required       
                            />
                        </div>

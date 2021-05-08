@@ -1,48 +1,47 @@
-import {AGREGAR_LIBRO, AGREGAR_LIBRO_EXITO, AGREGAR_LIBRO_ERROR, COMENZAR_DESCARGA_LIBRO, DESCARGA_LIBRO_EXITO,DESCARGAR_LIBRO_ERROR}
+import {ADD_BOOK, ADD_BOOK_EXITO, ADD_BOOK_ERROR, START_DOWNLOAD_BOOK, SUCCESS_BOOK_DOWNLOAD,DOWNLOAD_BOOK_ERROR}
  from '../types/Index';
- import clienteAxios from '../config/axios';
+ import clientAxios from '../config/axios';
 
- export function crearLibro (libro){
+ export function createBook (libro){
      return async (dispatch) =>{
-         dispatch(agregarLibro());
+         dispatch(addBook());
          console.log(libro)
          try{
-            await clienteAxios.post('/books', libro);
-             dispatch(agregarLibroExito(libro));
+            await clientAxios.post('/books', libro);
+             dispatch(addBookSuccess(libro));
 
          }catch (error){
              console.log(error);
-             dispatch(agregarLibroError(true));
+             dispatch(addBookError(true));
          }
      }
  }
 
 
- const agregarLibro = () => ({
-     type: AGREGAR_LIBRO
+ const addBook = () => ({
+     type: ADD_BOOK
  })
 
- const agregarLibroExito = libro => ({
-     type: AGREGAR_LIBRO_EXITO,
+ const addBookSuccess = libro => ({
+     type: ADD_BOOK_EXITO,
      payload: libro
  })
 
- const agregarLibroError =  estado => ({
-     type: AGREGAR_LIBRO_ERROR,
+ const addBookError =  estado => ({
+     type: ADD_BOOK_ERROR,
      payload:estado
  })
 
- export function obtenerLibro (){
+ export function getBook (){
      return async (dispatch) => {
-         dispatch(descargarLibro ());
+         dispatch(downloadBook ());
 
          try{
 
-             const respuesta = await clienteAxios.post('/books');
-             const response = respuesta.data.books;
+             const responseThu = await clientAxios.post('/books');
+             const response = responseThu.data.books;
 
              dispatch(descargaLibroExitosa(response))
-             console.log(dispatch, "linea 45")
             
          }catch(error){
              console.log(error);
@@ -51,17 +50,17 @@ import {AGREGAR_LIBRO, AGREGAR_LIBRO_EXITO, AGREGAR_LIBRO_ERROR, COMENZAR_DESCAR
      }
  }
 
- const descargarLibro = () => ({
-     type: COMENZAR_DESCARGA_LIBRO,
+ const downloadBook = () => ({
+     type: START_DOWNLOAD_BOOK,
      payload:true
  })
 
  const descargaLibroExitosa = libros => ({
-     type: DESCARGA_LIBRO_EXITO, 
+     type: SUCCESS_BOOK_DOWNLOAD, 
      payload: libros
  })
 
  const descargaLibroError = () => ({
-     type: DESCARGAR_LIBRO_ERROR,
+     type: DOWNLOAD_BOOK_ERROR,
      payload:true
  })

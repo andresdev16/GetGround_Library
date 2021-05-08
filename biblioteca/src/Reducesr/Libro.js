@@ -1,4 +1,4 @@
-import {AGREGAR_LIBRO, AGREGAR_LIBRO_EXITO, AGREGAR_LIBRO_ERROR, COMENZAR_DESCARGA_LIBRO, DESCARGA_LIBRO_EXITO, DESCARGAR_LIBRO_ERROR}
+import {ADD_BOOK, ADD_BOOK_EXITO, ADD_BOOK_ERROR, START_DOWNLOAD_BOOK, SUCCESS_BOOK_DOWNLOAD, DOWNLOAD_BOOK_ERROR}
  from '../types/Index';
  
 const initialState = {
@@ -10,21 +10,21 @@ const initialState = {
 export default function(state = initialState, action){
     switch (action.type) {
         
-        case COMENZAR_DESCARGA_LIBRO:
-        case AGREGAR_LIBRO:
+        case START_DOWNLOAD_BOOK:
+        case ADD_BOOK:
             return{
                 ...state,
                 loading:action.payload
             }
-        case AGREGAR_LIBRO_EXITO:
+        case ADD_BOOK_EXITO:
             return{
                 ...state,
                 loading:false,
                 libros: [...state.libros, action.payload]
             }
 
-        case DESCARGAR_LIBRO_ERROR:
-        case AGREGAR_LIBRO_ERROR:
+        case DOWNLOAD_BOOK_ERROR:
+        case ADD_BOOK_ERROR:
             return{
                 ...state,
                 loading:false,
@@ -32,7 +32,7 @@ export default function(state = initialState, action){
             }
 
         
-        case DESCARGA_LIBRO_EXITO: 
+        case SUCCESS_BOOK_DOWNLOAD: 
              return{
                 ...state,
                 loading:false,
